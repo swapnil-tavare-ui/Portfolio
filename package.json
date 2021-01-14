@@ -1,0 +1,40 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "portfolio website",
+  "main": "gulpfile.js",
+  "browserslist": [
+    "last 3 versions",
+    "> 1%",
+    "IE >= 9"
+  ],
+  "dependencies": {
+    "animate.css": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-uglifycss": "^1.1.0"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csscomb": "^3.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^4.14.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swapnil-tavare-ui/Portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swapnil-tavare-ui/Portfolio/issues"
+  },
+  "homepage": "https://github.com/swapnil-tavare-ui/Portfolio#readme"
+}
