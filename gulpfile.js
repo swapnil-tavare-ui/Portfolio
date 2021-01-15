@@ -16,7 +16,7 @@ const gulp = require('gulp'),
 	uglify = require('gulp-uglify');
 	
 gulp.task('compileCss', function () {
-	return   gulp.src(['src/scss/*.scss','src/scss/*.css'])
+	return   gulp.src(['src/scss/style.scss'])
 			.pipe(sass()) // Converts Sass to CSS with gulp-sass
 			.pipe(autoprefixer())
 			.pipe(csscomb())

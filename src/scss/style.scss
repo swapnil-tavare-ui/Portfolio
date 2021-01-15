@@ -1,74 +1,9 @@
-@font-face {
-	font-family: 'La Belle Aurore';
-	src: url('../src/fonts/labelleaurore-regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Nunito Sans';
-	src: url('../src/fonts/nunitosans-regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Nunito Sans';
-	src: url('../src/fonts/nunitosans-bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-}
-
+@import './reset';
+@import './fonts';
 $primarycolor: #08fdd8;
 $transition: 0.3s all ease;
-
-.primary-color {
-	color: $primarycolor;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-	outline: none;
-	word-break: break-word;
-	box-sizing: border-box;
-}
-
-ul,
-li {
-	list-style: none;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
-	outline: none;
-}
-
-img {
-	display: block;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: initial;
-	font-family: inherit;
-}
-
-.img-responsive {
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
-input,
-textarea {
-	font-family: inherit;
-}
+$tablet: 1024px;
+$mobile: 599px;
 
 html {
 	font-size: 62.5%;
@@ -82,9 +17,18 @@ body {
 	color: #fff;
 }
 
+.primary-color {
+	color: $primarycolor;
+}
+
 .page-wrapper {
 	display: flex;
 	height: 100vh;
+
+	@media(max-width:$tablet) {
+		height: auto;
+		flex-direction: column;
+	}
 
 	.navbar {
 		width: 7rem;
@@ -93,6 +37,12 @@ body {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+
+		@media(max-width:$tablet) {
+			width: 100%;
+			flex-direction: row;
+			align-items: center;
+		}
 	}
 
 	.content {
@@ -102,7 +52,22 @@ body {
 		padding-left: 5%;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
+
+		@media(max-width:$tablet) {
+			width: 100%;
+			padding: 0 2rem;
+			height: calc(100vh - 81.6px);
+		}
+
+		@media(max-width:$mobile) {
+			height: calc(100vh - 68px);
+		}
+
+		&__inner {
+			padding-left: 2.5rem;
+			margin: 2rem 0;
+		}
 	}
 }
 
@@ -112,10 +77,45 @@ body {
 	background-color: #070707;
 	justify-content: center;
 
+	@media(max-width:$tablet) {
+		width: 8rem;
+	}
+
 	.logo {
 		display: inline-flex;
 		flex-direction: column;
 		align-items: center;
+
+		&__letter {
+			color: rgb(253, 16, 86);
+			font-size: 5rem;
+			line-height: 5rem;
+			font-weight: 700;
+			position: relative;
+
+			@media(max-width:$mobile) {
+				font-size: 3.6rem;
+				line-height: 3.6rem;
+			}
+
+			&:after {
+				content: 'S';
+				position: absolute;
+				top: -3px;
+				left: -4px;
+				font-size: 5rem;
+				line-height: 5rem;
+				font-weight: 700;
+				color: $primarycolor;
+
+				@media(max-width:$mobile) {
+					font-size: 3.6rem;
+					line-height: 3.6rem;
+					top: -2px;
+					left: -3px;
+				}
+			}
+		}
 
 		&__name {
 			font-size: 1.2rem;
@@ -123,34 +123,72 @@ body {
 	}
 }
 
-.logo__letter {
-	color: rgb(253, 16, 86);
-	font-size: 5rem;
-	line-height: 5rem;
-	font-weight: 700;
-	position: relative;
+.social {
+	ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 3rem 0;
 
-	&:after {
-		content: 'S';
-		position: absolute;
-		top: -3px;
-		left: -4px;
-		font-size: 5rem;
-		line-height: 5rem;
-		font-weight: 700;
-		color: $primarycolor;
+		@media(max-width:$tablet) {
+			flex-direction: row;
+			padding: 0 2rem;
+		}
+
+		li {
+			margin-bottom: 2rem;
+
+			@media(max-width:$tablet) {
+				margin: 0 1rem;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+
+				@media(max-width:$tablet) {
+					margin-right: 0;
+				}
+			}
+
+			a {
+				display: block;
+				width: 1.8rem;
+				transition: $transition;
+
+				svg {
+					display: block;
+					fill: #909096;
+				}
+
+				&:hover {
+					svg {
+						fill: $primarycolor;
+					}
+				}
+			}
+		}
 	}
 }
 
 .main-title {
 	position: relative;
+	display: flex;
 	font-size: 6rem;
 	line-height: 7rem;
 	color: #fff;
 	font-weight: 700;
 	letter-spacing: 1px;
-	display: inline-block;
 	transform-origin: 50% 100%;
+
+	@media(max-width:$tablet) {
+		font-size: 4.8rem;
+		line-height: 6rem;
+	}
+
+	@media(max-width:$mobile) {
+		font-size: 2.4rem;
+		line-height: 3.4rem;
+	}
 
 	.text-wrapper {
 		position: relative;
@@ -175,6 +213,10 @@ body {
 	line-height: 1.6;
 	color: #8d8d8d;
 	position: relative;
+
+	@media(max-width:$mobile) {
+		font-size: 1.4rem;
+	}
 
 	.text-wrapper {
 		position: relative;
@@ -227,6 +269,7 @@ body {
 
 	span {
 		display: block;
+		max-width: 8rem;
 		color: #515152;
 		font-size: 1.8rem;
 		line-height: 2rem;
@@ -242,46 +285,104 @@ body {
 	}
 
 	&.top-tags {
-		position: absolute;
-		top: 2rem;
+		margin-top: 2rem;
 	}
 
 	&.bottom-tags {
-		position: absolute;
-		bottom: 2rem;
+		margin-bottom: 2rem;
 	}
 }
 
-.social {
-	ul {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 3rem 0;
+:root {
+	--animate-duration: 1s;
+	--animate-delay: 1s;
+	--animate-repeat: 1
+}
 
-		li {
-			margin-bottom: 2rem;
+.animate__animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-duration: var(--animate-duration);
+	animation-duration: var(--animate-duration);
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both
+}
 
-			&:last-child {
-				margin-bottom: 0;
-			}
-
-			a {
-				display: block;
-				width: 1.8rem;
-				transition: $transition;
-
-				svg {
-					display: block;
-					fill: #909096;
-				}
-
-				&:hover {
-					svg {
-						fill: $primarycolor;
-					}
-				}
-			}
-		}
+@-webkit-keyframes rubberBand {
+	0% {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1)
 	}
+
+	30% {
+		-webkit-transform: scale3d(1.25, .75, 1);
+		transform: scale3d(1.25, .75, 1)
+	}
+
+	40% {
+		-webkit-transform: scale3d(.75, 1.25, 1);
+		transform: scale3d(.75, 1.25, 1)
+	}
+
+	50% {
+		-webkit-transform: scale3d(1.15, .85, 1);
+		transform: scale3d(1.15, .85, 1)
+	}
+
+	65% {
+		-webkit-transform: scale3d(.95, 1.05, 1);
+		transform: scale3d(.95, 1.05, 1)
+	}
+
+	75% {
+		-webkit-transform: scale3d(1.05, .95, 1);
+		transform: scale3d(1.05, .95, 1)
+	}
+
+	to {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1)
+	}
+}
+
+@keyframes rubberBand {
+	0% {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1)
+	}
+
+	30% {
+		-webkit-transform: scale3d(1.25, .75, 1);
+		transform: scale3d(1.25, .75, 1)
+	}
+
+	40% {
+		-webkit-transform: scale3d(.75, 1.25, 1);
+		transform: scale3d(.75, 1.25, 1)
+	}
+
+	50% {
+		-webkit-transform: scale3d(1.15, .85, 1);
+		transform: scale3d(1.15, .85, 1)
+	}
+
+	65% {
+		-webkit-transform: scale3d(.95, 1.05, 1);
+		transform: scale3d(.95, 1.05, 1)
+	}
+
+	75% {
+		-webkit-transform: scale3d(1.05, .95, 1);
+		transform: scale3d(1.05, .95, 1)
+	}
+
+	to {
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1)
+	}
+}
+
+.animate__rubberBand {
+	-webkit-animation-name: rubberBand;
+	animation-name: rubberBand
 }
